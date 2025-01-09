@@ -10,7 +10,12 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+    Cypress.Commands.add('getIframe',() => {
+        return cy.get('iframe',{timeout : 1000})
+        .its('0.contentDocument.body')  
+        .should('not.be.empty')
+        .then(cy.wrap);
+    });
 //
 //
 // -- This is a child command --
