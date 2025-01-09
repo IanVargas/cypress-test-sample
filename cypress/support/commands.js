@@ -10,7 +10,16 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+    Cypress.Commands.add('getIframe',() => {
+        return cy.get('iframe',{timeout : 1000})
+        .its('0.contentDocument.body')  
+        .should('not.be.empty')
+        .then(cy.wrap);
+    });
+
+    Cypress.Commands.add('getItem', (itemToFind) => {
+        return cy.getIframe().find(itemToFind,{timeout : 1000})
+    })
 //
 //
 // -- This is a child command --
