@@ -16,6 +16,10 @@
         .should('not.be.empty')
         .then(cy.wrap);
     });
+
+    Cypress.Commands.add('getItem', (itemToFind) => {
+        return cy.getIframe().find(itemToFind,{timeout : 1000})
+    })
 //
 //
 // -- This is a child command --
